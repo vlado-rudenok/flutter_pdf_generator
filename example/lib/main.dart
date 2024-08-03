@@ -31,8 +31,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _flutterPdfGeneratorPlugin.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await _flutterPdfGeneratorPlugin.convertHtmlToPdf('') ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }

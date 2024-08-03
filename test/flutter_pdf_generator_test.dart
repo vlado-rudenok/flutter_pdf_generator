@@ -4,12 +4,9 @@ import 'package:flutter_pdf_generator/flutter_pdf_generator_platform_interface.d
 import 'package:flutter_pdf_generator/flutter_pdf_generator_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockFlutterPdfGeneratorPlatform
-    with MockPlatformInterfaceMixin
-    implements FlutterPdfGeneratorPlatform {
-
+class MockFlutterPdfGeneratorPlatform with MockPlatformInterfaceMixin implements FlutterPdfGeneratorPlatform {
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<String?> convertHtmlToPdf(String htmlContent) => Future.value('42');
 }
 
 void main() {
@@ -24,6 +21,6 @@ void main() {
     MockFlutterPdfGeneratorPlatform fakePlatform = MockFlutterPdfGeneratorPlatform();
     FlutterPdfGeneratorPlatform.instance = fakePlatform;
 
-    expect(await flutterPdfGeneratorPlugin.getPlatformVersion(), '42');
+    expect(await flutterPdfGeneratorPlugin.convertHtmlToPdf(''), '');
   });
 }

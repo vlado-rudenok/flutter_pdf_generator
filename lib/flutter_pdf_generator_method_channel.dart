@@ -10,8 +10,8 @@ class MethodChannelFlutterPdfGenerator extends FlutterPdfGeneratorPlatform {
   final methodChannel = const MethodChannel('flutter_pdf_generator');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+  Future<String?> convertHtmlToPdf(String htmlContent) async {
+    final version = await methodChannel.invokeMethod<String>('convertHtmlToPdf');
     return version;
   }
 }

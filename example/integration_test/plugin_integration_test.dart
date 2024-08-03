@@ -6,17 +6,19 @@
 // For more information about Flutter integration tests, please see
 // https://docs.flutter.dev/cookbook/testing/integration/introduction
 
+import 'package:flutter_pdf_generator/flutter_pdf_generator.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-
-import 'package:flutter_pdf_generator/flutter_pdf_generator.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('getPlatformVersion test', (WidgetTester tester) async {
-    final FlutterPdfGenerator plugin = FlutterPdfGenerator();
-    final String? version = await plugin.convertHtmlToPdf('');
+  testWidgets('getPlatformVersion test', (tester) async {
+    final version = await FlutterPdfGenerator.convertHtmlToPdf(
+      htmlContent: '',
+      savedPath: '',
+      size: PaperSize.defined(DefinedPaperSize.a4, isPortrait: false),
+    );
     // The version string depends on the host platform running the test, so
     // just assert that some non-empty string is returned.
     expect(version?.isNotEmpty, true);

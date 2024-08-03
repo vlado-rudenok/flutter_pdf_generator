@@ -23,7 +23,14 @@ abstract class FlutterPdfGeneratorPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> convertHtmlToPdf(String htmlContent) {
+  Future<String?> convertHtmlToPdf({
+    required String htmlContent,
+    required String savedPath,
+    required Map<String, double> margins,
+    required Map<String, double> size,
+    String? footerText,
+    String? headerText,
+  }) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }

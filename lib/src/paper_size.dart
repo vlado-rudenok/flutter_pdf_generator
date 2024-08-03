@@ -57,3 +57,18 @@ class PaperSize {
   double get orientedHeight => isPortrait ? height : width;
   double get orientedWidth => isPortrait ? width : height;
 }
+
+class PdfMargins {
+  PdfMargins({this.top = 0, this.bottom = 0, this.left = 0, this.right = 0});
+  double top;
+  double bottom;
+  double left;
+  double right;
+
+  Map<String, double> toMap() => {
+        'top': top,
+        'bottom': bottom,
+        'left': left,
+        'right': right,
+      };
+}

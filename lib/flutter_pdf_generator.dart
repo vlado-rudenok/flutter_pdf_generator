@@ -9,9 +9,17 @@ class FlutterPdfGenerator {
   static Future<String?> convertHtmlToPdf({
     required String htmlContent,
     required PaperSize size,
+    required PdfMargins margins,
     required String savedPath,
     String? footerText,
     String? headerText,
   }) =>
-      FlutterPdfGeneratorPlatform.instance.convertHtmlToPdf(htmlContent);
+      FlutterPdfGeneratorPlatform.instance.convertHtmlToPdf(
+        htmlContent: htmlContent,
+        savedPath: savedPath,
+        size: size.toMap(),
+        margins: margins.toMap(),
+        footerText: footerText,
+        headerText: headerText,
+      );
 }

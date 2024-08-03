@@ -2,6 +2,9 @@ import Flutter
 import UIKit
 
 public class FlutterPdfGeneratorPlugin: NSObject, FlutterPlugin {
+
+  let generator = PdfGenerator()
+
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_pdf_generator", binaryMessenger: registrar.messenger())
     let instance = FlutterPdfGeneratorPlugin()
@@ -10,8 +13,8 @@ public class FlutterPdfGeneratorPlugin: NSObject, FlutterPlugin {
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
-    case "getPlatformVersion":
-      result("iOS " + UIDevice.current.systemVersion)
+    case "convertHtmlToPdf":
+      generator.generatePdf(call, result: result)
     default:
       result(FlutterMethodNotImplemented)
     }

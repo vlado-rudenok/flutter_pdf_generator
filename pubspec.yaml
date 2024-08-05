@@ -25,5 +25,3 @@ flutter:
         pluginClass: FlutterPdfGeneratorPlugin
       ios:
         pluginClass: FlutterPdfGeneratorPlugin
-      macos:
-        pluginClass: FlutterPdfGeneratorPlugin

@@ -3,6 +3,7 @@ package com.vlqdo.flutter_pdf_generator
 
 import android.annotation.SuppressLint
 import android.os.Handler
+import android.os.Looper
 import android.print.PdfPrint
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -41,7 +42,8 @@ fun FlutterPdfGeneratorPlugin.setupWebViewClient(
     webView.webViewClient = object : WebViewClient() {
         override fun onPageFinished(view: WebView, url: String) {
             super.onPageFinished(view, url)
-            Handler().postDelayed({
+
+            Handler(Looper.getMainLooper()).postDelayed({
                 webView.exportAsPdfFromWebView(savedPath!!, format!!, footerText, headerText, object : PdfPrint.CallbackPrint {
                     override fun success(path: String) {
                         result.success(path)

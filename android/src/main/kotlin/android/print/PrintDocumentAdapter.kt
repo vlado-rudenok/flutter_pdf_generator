@@ -3,8 +3,12 @@ package android.print
 import android.os.Bundle
 import android.os.CancellationSignal
 import android.os.ParcelFileDescriptor
+import com.itextpdf.io.font.PdfEncodings
+import com.itextpdf.io.font.constants.StandardFonts
 import com.itextpdf.kernel.colors.Color
 import com.itextpdf.kernel.colors.DeviceGray
+import com.itextpdf.kernel.font.PdfFontFactory
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy
 import com.itextpdf.kernel.geom.Rectangle
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfReader
@@ -118,7 +122,7 @@ class HeaderPrintDocumentAdapter(
     private fun addFooter(document: Document, footerText: String, pageSize: Rectangle, pageNumber: Int, textColor: Color) {
 
         val footerHeight = 20f
-        val footerParagraph = Paragraph("$footerText $pageNumber")
+        val footerParagraph = Paragraph(footerText.replace("{}", "$pageNumber"))
             .setTextAlignment(TextAlignment.CENTER)
             .setFontColor(textColor)
 

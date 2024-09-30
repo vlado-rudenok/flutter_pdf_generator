@@ -73,7 +73,8 @@ class CustomPrintPageRenderer: UIPrintPageRenderer {
             super.drawFooterForPage(at: pageIndex, in: footerRect)
             return
         }
-        let text = "\(footerText) \(pageIndex + 1)"
+  
+        let text = footerText.replacingOccurrences(of: "{}", with: "\(pageIndex + 1)")
         let attributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray

@@ -2,7 +2,7 @@ group = "com.vlqdo.flutter_pdf_generator"
 version = "1.0-SNAPSHOT"
 
 buildscript {
-    ext.kotlin_version = "1.7.10"
+    ext.kotlin_version = "1.9.22"
     repositories {
         google()
         mavenCentral()
@@ -50,7 +50,8 @@ android {
     }
 
     dependencies {
-        implementation 'com.itextpdf:itext7-core:7.2.2'
+        implementation 'com.itextpdf:itext7-core:8.0.5'
+        implementation 'org.slf4j:slf4j-simple:1.7.36'
         testImplementation("org.jetbrains.kotlin:kotlin-test")
         testImplementation("org.mockito:mockito-core:5.3.1")
     }
